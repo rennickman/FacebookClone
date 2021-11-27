@@ -112,8 +112,8 @@ const Rightbar = ({ profile }) => {
     return (
         <div className="rightbar">
             <div className="rightbarWrapper">
-                <ProfileRightbar />
-                
+                {/* Check for a profile value in props and display differenct Rightbar for Profile and Home Pages */}
+                {profile ? <ProfileRightbar /> : <HomeRightbar />}
             </div>
         </div>
     );
