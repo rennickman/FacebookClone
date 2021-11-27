@@ -1,0 +1,85 @@
+/* Sidebar Container */
+.sidebar {
+    flex: 3;
+    /* Minus the size of topbar from height */
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+}
+
+
+/* Styling the Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(179, 179, 179);
+}
+
+
+/* Wrapper for Sidebar */
+.sidebarWrapper {
+    padding: 20px;
+}
+
+/* List Of Icons */
+.sidebarList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Sidebar Icon Container */
+.sidebarListItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Sidebar Icon */
+.sidebarIcon {
+    margin-right: 15px;
+}
+
+
+/* Show More Button */
+.sidebarButton {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+/* Horizontal Line Break between Lists */
+.sidebarHr {
+    margin: 20px 0;
+}
+
+
+/* Friend List Container */
+.sidebarFriendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Friend Container */
+.sidebarFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Friend Profile Pic */
+.sidebarFriendImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}

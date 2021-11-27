@@ -1,0 +1,109 @@
+/* Topbar Container */
+.topbarContainer {
+    height: 50px;
+    width: 100%;
+    background-color: #1877f2;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+
+/* Logo Container */
+.topbarLeft {
+    flex: 3;
+}
+
+/* Website Logo */
+.logo {
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Searchbar Container */
+.topbarCenter {
+    flex: 5;
+}
+
+/* Searchbar */
+.searchbar {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Searchbar Icon*/
+.searchIcon {
+    font-size: 20px !important;
+    margin-left: 10px;
+}
+
+/* Searchbar Input */
+.searchInput {
+    border: none;
+    width: 70%;
+}
+
+/* Hide outline on input section */
+.searchInput:focus {
+    outline: none;
+}
+
+
+/* Links and Notifications Container */
+.topbarRight {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+/* Links Container */
+.topbarLink {
+    margin-right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Icons Container */
+.topbarIcons {
+    display: flex;
+}
+
+/* Icon */
+.topbarIconItem {
+    margin-right: 15px;
+    cursor: pointer;   
+    position: relative;
+}
+
+/* Notification Badge */
+.topbarIconBadge {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    justify-content: center;
+}
+
+/* Profile Pic */
+.topbarImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}

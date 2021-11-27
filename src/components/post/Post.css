@@ -1,0 +1,92 @@
+/* Post Container */
+.post {
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    margin: 30px 0;
+}
+
+/* Wrapper for Posts */
+.postWrapper {
+    padding: 10px;;
+}
+
+/* Top Section of Post */
+.postTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Sender Info Section */
+.postTopLeft {
+    display: flex;
+    align-items: center;
+}
+
+/* Sender Profile Pic */
+.postProfileImg {
+    width: 32px;
+    object-fit: cover;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* Send Username */
+.postUsername {
+    font-size: 15;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+/* Date of Post */
+.postDate {
+    font-size: 12px;
+}
+
+/* Image Section */
+.postCenter {
+    margin: 20px 0;
+}
+
+/* Image */
+.postImg {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* Like and Comment Section */
+.postBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Like Section */
+.postBottomLeft {
+    display: flex;
+    align-items: center;
+}
+
+/* Like Icon */
+.likeIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Number of likes */
+.postLikeCounter {
+    font-size: 15px;
+}
+
+/* Number of Comments */
+.postCommentText {
+    cursor: pointer;
+    border-bottom: 1px dashed gray;
+    font-size: 15px;
+}
