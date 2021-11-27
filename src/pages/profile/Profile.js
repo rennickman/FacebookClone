@@ -12,6 +12,12 @@ import Rightbar from '../../components/rightbar/Rightbar';
 const Profile = () => {
 
 
+    // Assets folder
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+
+
 
     return (
         <>
@@ -27,9 +33,9 @@ const Profile = () => {
                     <div className="profileRightTop">
                         <div className="profileCover">
                             {/* Cover Image */}
-                            <img src="/assets/post/3.jpeg" alt="" className="profileCoverImg" />
+                            <img src={`${PF}post/3.jpeg`} alt="" className="profileCoverImg" />
                             {/* Porfile Pic - Fits inside Cover Image */}
-                            <img src="/assets/person/7.jpeg" alt="" className="profileUserImg" />
+                            <img src={`${PF}person/7.jpeg`} alt="" className="profileUserImg" />
                         </div>
 
                         <div className="profileInfo">

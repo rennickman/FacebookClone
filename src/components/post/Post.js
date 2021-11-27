@@ -13,6 +13,9 @@ const Post = ({ post }) => {
     const [like, setLike] = useState(post.like);
     const [isLiked, setIsLiked] = useState(false);
 
+    // Assets folder
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
 
     // Handler for liking and unliking Posts
     const likeHandler = () => {
@@ -51,14 +54,14 @@ const Post = ({ post }) => {
                 <div className="postCenter">
                     {/* Post Image Section */}
                     <span className="postText">{post?.desc}</span>
-                    <img className="postImage" src={post.photo} alt="" />
+                    <img className="postImage" src={PF + post.photo} alt="" />
                 </div>
 
                 <div className="postBottom">
                     {/* Like Section */}
                     <div className="postBottomLeft">
-                        <img className="likeIcon" src="/assets/like.png" onClick={likeHandler} alt="" />
-                        <img className="likeIcon" src="/assets/heart.png" onClick={likeHandler} alt="" />
+                        <img className="likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt="" />
+                        <img className="likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt="" />
                         <span className="postLikeCounter">{like} people like it</span>
                     </div>
 
