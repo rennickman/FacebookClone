@@ -4,6 +4,8 @@
     /* Minus the size of topbar from height */
     height: calc(100vh - 50px);
     overflow-y: scroll;
+    position: sticky;
+    top: 50px;
 }
 
 
@@ -68,18 +70,3 @@
     list-style: none;
 }
 
-/* Friend Container */
-.sidebarFriend {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-/* Friend Profile Pic */
-.sidebarFriendImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
