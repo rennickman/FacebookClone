@@ -73,6 +73,16 @@
     cursor: pointer;
 }
 
+/* Hide Outline on Login Button */
+.loginButton:focus {
+    outline: none;
+}
+
+/* Change cursor style when button disabled */
+.loginButton:disabled {
+    cursor: not-allowed;
+}
+
 /* Forgot Password */
 .loginForgot {
     text-align: center;

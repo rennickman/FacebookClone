@@ -7,7 +7,7 @@ import Online from '../online/Online';
 
 
 
-const Rightbar = ({ profile }) => {
+const Rightbar = ({ user }) => {
 
 
     // Assets folder
@@ -45,6 +45,7 @@ const Rightbar = ({ profile }) => {
 
 
 
+
     // Right bar for Profile Page
     const ProfileRightbar = () => {
         return (
@@ -56,19 +57,21 @@ const Rightbar = ({ profile }) => {
                     {/* Current Location */}
                     <div className="rightbarInfoItem">
                         <span className="rightbarInfoKey">City:</span>
-                        <span className="rightbarInfoValue">Newbridge</span>
+                        <span className="rightbarInfoValue">{user.city}</span>
                     </div>
 
                     {/* Hometown */}
                     <div className="rightbarInfoItem">
                         <span className="rightbarInfoKey">From:</span>
-                        <span className="rightbarInfoValue">Newbridge</span>
+                        <span className="rightbarInfoValue">{user.from}</span>
                     </div>
 
                     {/* Relationship status */}
                     <div className="rightbarInfoItem">
                         <span className="rightbarInfoKey">Relationship:</span>
-                        <span className="rightbarInfoValue">It's complicated</span>
+                        <span className="rightbarInfoValue">
+                            {user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-"}
+                        </span>
                     </div> 
                 </div>
 
@@ -118,7 +121,7 @@ const Rightbar = ({ profile }) => {
         <div className="rightbar">
             <div className="rightbarWrapper">
                 {/* Check for a profile value in props and display differenct Rightbar for Profile and Home Pages */}
-                {profile ? <ProfileRightbar /> : <HomeRightbar />}
+                {user ? <ProfileRightbar /> : <HomeRightbar />}
             </div>
         </div>
     );

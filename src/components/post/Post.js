@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MoreVert } from '@material-ui/icons';
+import axios from 'axios';
+import { format } from 'timeago.js';
+import { Link } from 'react-router-dom';
 
 import './Post.css';
-import { Users } from '../../dummyData';
 
 
 
@@ -10,11 +12,29 @@ import { Users } from '../../dummyData';
 const Post = ({ post }) => {
 
 
-    const [like, setLike] = useState(post.like);
+    const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
+    const [user, setUser] = useState({});
+
 
     // Assets folder
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+
+
+    // Use Effect to fetch the User when Post is rendered
+    useEffect(() => {
+        const fetchUser = async () => {
+            // Get User from database using userId contained in Post
+            const fetchedUser = await axios.get(`/users?userId=${post.userId}`);
+            // Store the User in state
+            setUser(fetchedUser.data);
+        };
+
+        fetchUser();
+    }, [post.userId]);
+
+
 
 
     // Handler for liking and unliking Posts
@@ -34,15 +54,15 @@ const Post = ({ post }) => {
 
                 <div className="postTop">
                     <div className="postTopLeft">
-                        {/* Sender Profile Pic - filter through Users using the User Id from Post for profile pic */}
-                        <img 
-                            className="postProfileImg"  alt="" 
-                            src={Users.filter(user => user.id === post.userId)[0].profilePicture} 
-                        />
+
+                        <Link to={`profile/${user.username}`}>
+                            {/* Sender Profile Pic - Set as default if user doesnt contain profile pic */}
+                            <img className="postProfileImg"  alt="" src={user.profilePicture || PF + "person/noAvatar.png"} />
+                        </Link>
 
                         {/* Sender Info - filter through Users using the User Id from Post for username */}
-                        <span className="postUsername">{Users.filter(user => user.id === post.userId)[0].username}</span>
-                        <span className="postDate">{post.date}</span>
+                        <span className="postUsername">{user.username}</span>
+                        <span className="postDate">{format(post.createdAt)}</span>
                     </div>
 
                     {/* More Icon */}
@@ -54,7 +74,7 @@ const Post = ({ post }) => {
                 <div className="postCenter">
                     {/* Post Image Section */}
                     <span className="postText">{post?.desc}</span>
-                    <img className="postImage" src={PF + post.photo} alt="" />
+                    <img className="postImage" src={PF + post.img} alt="" />
                 </div>
 
                 <div className="postBottom">
