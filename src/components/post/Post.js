@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { MoreVert } from '@material-ui/icons';
 import axios from 'axios';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
 
 import './Post.css';
-
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -16,10 +16,12 @@ const Post = ({ post }) => {
     const [isLiked, setIsLiked] = useState(false);
     const [user, setUser] = useState({});
 
+    const { user: currentUser } = useContext(AuthContext);
 
     // Assets folder
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+    
 
 
     // Use Effect to fetch the User when Post is rendered
@@ -37,8 +39,26 @@ const Post = ({ post }) => {
 
 
 
+    // Use effect to check whether the User has already liked the post
+    useEffect(() => {
+        // Check whether the current user Id is already in the post's likes array
+        setIsLiked(post.likes.includes(currentUser._id));
+        
+    }, [currentUser._id, post.likes]);
+
+
+
+
     // Handler for liking and unliking Posts
     const likeHandler = () => {
+
+        try {
+            // Update the likes array in the database
+            axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+        } catch (err) {
+
+        }
+
         // Add or subtract 1 from number of likes depending on whether the post is already liked or not
         setLike(isLiked ? like - 1 : like + 1);
         // Toggle isLiked in state
@@ -57,7 +77,10 @@ const Post = ({ post }) => {
 
                         <Link to={`profile/${user.username}`}>
                             {/* Sender Profile Pic - Set as default if user doesnt contain profile pic */}
-                            <img className="postProfileImg"  alt="" src={user.profilePicture || PF + "person/noAvatar.png"} />
+                            <img 
+                                className="postProfileImg"  alt="" 
+                                src={user.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png"} 
+                            />
                         </Link>
 
                         {/* Sender Info - filter through Users using the User Id from Post for username */}

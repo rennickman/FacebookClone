@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import './Feed.css';
 import Share from '../share/Share';
 import Post from '../post/Post';
-
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -13,7 +13,7 @@ const Feed = ({ username }) => {
 
 
     const [posts, setPosts] = useState([]);
-
+    const { user } = useContext(AuthContext);
 
 
     // Use Effect to fetch Posts when Feed is rendered
@@ -23,14 +23,16 @@ const Feed = ({ username }) => {
             // Get Timeline or all Posts from a User from database depending on whether Homepage or Profile page
             const timeline = username ? 
                 await axios.get("/posts/profile/" + username) : 
-                await axios.get("/posts/timeline/619bffe9e875e1bd07a72f48");
+                await axios.get("/posts/timeline/" + user._id);
 
-            // Store the timeline in state
-            setPosts(timeline.data);
+            // Store the timeline in state - sorted according to Date they were created
+            setPosts(timeline.data.sort((p1, p2) => {
+                return new Date(p2.createdAt) - new Date(p1.createdAt);
+            }));
         };
 
         fetchPosts();
-    }, [username]);
+    }, [username, user._id]);
 
 
 
@@ -41,7 +43,7 @@ const Feed = ({ username }) => {
         <div className="feed">
             <div className="feedWrapper">
                 {/* Share Section */}
-                <Share />
+                {(!username || username === user.username) && <Share />}
 
                 {/* Map through Array of Posts */}
                 {posts.map(post => (

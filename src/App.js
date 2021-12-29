@@ -27,7 +27,7 @@ const App = () => {
 
                 {/* Register Route Cant be accessed if already logged in */}
                 <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-
+                
                 {/* Profile Route */}
                 <Route path="/profile/:username" element={<Profile />} />
             </Routes>

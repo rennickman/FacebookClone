@@ -77,7 +77,7 @@ const Register = () => {
                         {/* Register Button */}
                         <button className="loginButton" type="submit">Sign Up</button>
 
-                        {/* Login Button */}
+                        {/* Login Button */}    
                         <button className="loginRegisterButton">Log Into Account</button>
                     </form>
                 </div>

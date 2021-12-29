@@ -6,7 +6,16 @@ import AuthReducer from './AuthReducer';
 
 // Setting intial state for context
 const INITIAL_STATE = {
-    user: null,
+    user: {
+        _id: "619bffe9e875e1bd07a72f48",
+        username: "bob",
+        email: "bob@gmail.com",
+        profilePicture: "person/1.jpeg",
+        coverPicture: "",
+        isAdmin: false,
+        followers: [],
+        following: []
+    },
     isFetching: false,
     error: false
 };
